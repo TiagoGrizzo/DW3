@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\DW3\\sistema-academico\\SistemaAcademico\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\views\\disciplinas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|solutionrelative:sistemaacademico\\views\\disciplinas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\models\\disciplina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|solutionrelative:sistemaacademico\\models\\disciplina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\controllers\\disciplinascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|solutionrelative:sistemaacademico\\controllers\\disciplinascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\migrations\\20260303125501_segunda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|solutionrelative:sistemaacademico\\migrations\\20260303125501_segunda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|solutionrelative:sistemaacademico\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\models\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|solutionrelative:sistemaacademico\\models\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Migrations\\20260303125501_segunda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SistemaAcademico\\Migrations\\20260303125501_segunda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\models\\matricula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\sistemaacademico.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|solutionrelative:sistemaacademico\\sistemaacademico.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\models\\disciplina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|solutionrelative:sistemaacademico\\models\\disciplina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3C2B6DEE-CE11-42D8-93F7-738EEBB0E85C}|SistemaAcademico\\SistemaAcademico.csproj|c:\\dw3\\sistema-academico\\sistemaacademico\\sistemaacademico\\models\\curso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -62,7 +70,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Curso.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Models\\Curso.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Models\\Curso.cs",
@@ -75,20 +83,47 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "Disciplina.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Models\\Disciplina.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Models\\Disciplina.cs",
-              "ToolTip": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Models\\Disciplina.cs",
-              "RelativeToolTip": "SistemaAcademico\\Models\\Disciplina.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
+              "ToolTip": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Models\\Disciplina.cs*",
+              "RelativeToolTip": "SistemaAcademico\\Models\\Disciplina.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-24T13:31:39.547Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Views\\Disciplinas\\Index.cshtml",
+              "RelativeDocumentMoniker": "SistemaAcademico\\Views\\Disciplinas\\Index.cshtml",
+              "ToolTip": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Views\\Disciplinas\\Index.cshtml*",
+              "RelativeToolTip": "SistemaAcademico\\Views\\Disciplinas\\Index.cshtml*",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAowBUAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-10T13:28:56.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DisciplinasController.cs",
+              "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Controllers\\DisciplinasController.cs",
+              "RelativeDocumentMoniker": "SistemaAcademico\\Controllers\\DisciplinasController.cs",
+              "ToolTip": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Controllers\\DisciplinasController.cs",
+              "RelativeToolTip": "SistemaAcademico\\Controllers\\DisciplinasController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowBUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-10T12:54:37.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "SistemaAcademico\\Views\\Shared\\_Layout.cshtml",
@@ -101,20 +136,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "20260303125501_segunda.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Migrations\\20260303125501_segunda.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Migrations\\20260303125501_segunda.cs",
               "ToolTip": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Migrations\\20260303125501_segunda.cs",
               "RelativeToolTip": "SistemaAcademico\\Migrations\\20260303125501_segunda.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-03T12:55:01.239Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "20260224152241_primeira.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Migrations\\20260224152241_primeira.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Migrations\\20260224152241_primeira.cs",
@@ -122,12 +157,11 @@
               "RelativeToolTip": "SistemaAcademico\\Migrations\\20260224152241_primeira.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T15:22:41.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-24T15:22:41.283Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Program.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Program.cs",
@@ -139,7 +173,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\appsettings.json",
               "RelativeDocumentMoniker": "SistemaAcademico\\appsettings.json",
@@ -151,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "ApplicationBdContext.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Data\\ApplicationBdContext.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Data\\ApplicationBdContext.cs",
@@ -163,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "SistemaAcademico.csproj",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\SistemaAcademico.csproj",
               "RelativeDocumentMoniker": "SistemaAcademico\\SistemaAcademico.csproj",
@@ -175,7 +209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Matricula.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Models\\Matricula.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Models\\Matricula.cs",
@@ -183,12 +217,11 @@
               "RelativeToolTip": "SistemaAcademico\\Models\\Matricula.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T13:32:48.284Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-24T13:32:48.284Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Aluno.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Models\\Aluno.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Models\\Aluno.cs",
@@ -196,12 +229,11 @@
               "RelativeToolTip": "SistemaAcademico\\Models\\Aluno.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T13:28:17.148Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-24T13:28:17.148Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\DW3\\sistema-academico\\SistemaAcademico\\SistemaAcademico\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "SistemaAcademico\\Models\\Usuario.cs",
