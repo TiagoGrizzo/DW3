@@ -4,7 +4,7 @@ using MongoDbGenericRepository.Attributes;
 namespace VasosInteligentes.Models
 {
     [CollectionName("Roles")]
-    public class ApplcationRole: MongoDbIdentityRole
+    public class ApplicationRole: MongoDbIdentityRole
     {
     }
 }

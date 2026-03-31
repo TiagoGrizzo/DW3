@@ -1,15 +1,52 @@
 using VasosInteligentes.Data;
+using VasosInteligentes.Models;
+using VasosInteligentes.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+//conexão com o mongodb
 builder.Services.Configure<MongoSettings>(
     builder.Configuration.GetSection("MongoConnection"));
 builder.Services.AddSingleton<ContextMongoDb>();
 
+//cofiguração do identity
+
+
+var mongoSettings = builder.Configuration.GetSection("MongoConnection").Get<AspNetCore.Identity.MongoDbCore.Infrastructure.MongoDbSettings>();
+
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>
+    (options =>
+    {
+        options.Password.RequiredLength = 6;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireDigit = false;
+        options.Password.RequireUppercase = false;
+    })
+    .AddMongoDbStores<ApplicationUser, ApplicationRole, string>
+    (mongoSettings.ConnectionString, mongoSettings.Database)
+    .AddDefaultTokenProviders();
+
+//Importante para Scaffolding e as RazorPages para o Identity
+builder.Services.AddRazorPages();
+
+
 var app = builder.Build();
+
+//Seeds
+using(var Scope = app.Services.CreateScope())
+{
+    var services = Scope.ServiceProvider;
+    try
+    {
+        await IdentitySeeds.SeedRolesAndUser(services, "Admin@123");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erro Seed: {ex.Message}");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -17,6 +54,10 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseRouting();
+
+//acrescentar app.UseAuthentication antes do app.UseAuthorization
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

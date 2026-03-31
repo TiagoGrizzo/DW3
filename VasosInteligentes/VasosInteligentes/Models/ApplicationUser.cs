@@ -4,6 +4,8 @@ using MongoDbGenericRepository.Attributes;
 namespace VasosInteligentes.Models
 {
     [CollectionName("Users")]
-    public class ApplicationUser:MongoDbIdentityUser
- 
+    public class ApplicationUser : MongoDbIdentityUser
+    {
+        internal string? Username;
+    }
 }
