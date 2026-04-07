@@ -67,5 +67,10 @@ namespace VasosInteligentes.Seeds
                 else { return; }
             }
         }
+
+        internal static async Task SeedRolesAndUser(IServiceProvider services, string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

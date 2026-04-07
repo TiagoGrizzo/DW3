@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +18,14 @@ namespace VasosInteligentes.Controllers
     {
         private readonly ContextMongoDb _context;
 
-        public VasosController(ContextMongoDb context)
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public VasosController(ContextMongoDb context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
-
+        [Authorize(Roles ="Administrador")]
         // GET: Vasos
         public async Task<IActionResult> Index()
         {
@@ -49,7 +54,46 @@ namespace VasosInteligentes.Controllers
             return View(result);
         }//Metodo
 
+        [Authorize(Roles = "Usuario")]
+        // GET: Vasos
+        public async Task<IActionResult> MeusVasos()
+        {
+            //pegar o usuario logado
+            var user = await _userManager.GetUserAsync(User);
+            if(user == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+            var usuarioId = user.Id;
+
+            var pipeline = new BsonDocument[]
+            {
+                new BsonDocument ("$match", new BsonDocument("UserId", usuarioId)),
+                //Criar campos temporários será usado na conversão de object para string
+                new BsonDocument("$addFields", new BsonDocument
+                {
+                    {"PlantaIdObj", new BsonDocument("$toObjectId", "$PlantaId") }
+                }), 
+                //Faz o join usando o campo convertido
+                new BsonDocument("$lookup", new BsonDocument
+                {
+                    {"from", "Planta" },
+                    {"localField", "PLantaIdObj" },
+                    {"foreignField", "_id" },
+                    {"as", "PlantaRelacionada" }
+                }),
+                //Remover campos extras para não "quebrar" o C#
+                new BsonDocument("$project", new BsonDocument
+                {
+                    {"PlantaIdObj", 0 }
+                })
+            };
+            var result = await _context.Vaso.Aggregate<Vaso>(pipeline).ToListAsync();
+            return View(result);
+        }//Metodo
+
         // GET: Vasos/Details/5
+        [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -89,6 +133,7 @@ namespace VasosInteligentes.Controllers
         }
 
         // GET: Vasos/Create
+        [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Create()
         {
             var plantas = await _context.Planta.Find(_ => true).ToListAsync();
@@ -99,10 +144,20 @@ namespace VasosInteligentes.Controllers
         // POST: Vasos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Usuario")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Nome,PlantaId,Localizacao")] Vaso vaso)
         {
+            //pegar o usuario logado
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Accounts");
+            }
+            vaso.UsuarioId = user.Id;
+            //como UsuarioId não vem da view, vai criar um erro no modelstate que deve ser retirado
+            ModelState.Remove("UsuarioId");
             if (ModelState.IsValid)
             {
                 await _context.Vaso.InsertOneAsync(vaso);
@@ -110,7 +165,7 @@ namespace VasosInteligentes.Controllers
             }
             return View(vaso);
         }
-
+        [Authorize(Roles = "Usuario")]
         // GET: Vasos/Edit/5
         public async Task<IActionResult> Edit(string id)
         {

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using VasosInteligentes.Data;
 using VasosInteligentes.Models;
 using VasosInteligentes.Seeds;
@@ -25,7 +26,7 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>
         options.Password.RequireUppercase = false;
     })
     .AddMongoDbStores<ApplicationUser, ApplicationRole, string>
-    (mongoSettings.ConnectionString, mongoSettings.Database)
+    (mongoSettings.ConnectionString, mongoSettings.DatabaseName)
     .AddDefaultTokenProviders();
 
 //Importante para Scaffolding e as RazorPages para o Identity
@@ -40,7 +41,7 @@ using(var Scope = app.Services.CreateScope())
     var services = Scope.ServiceProvider;
     try
     {
-        await IdentitySeeds.SeedRolesAndUser(services, "Admin@123");
+       await IdentitySeeds.SeedRolesAndUser(services, "Admin@123");
     }
     catch (Exception ex)
     {
