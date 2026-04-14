@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace VasosInteligentes.Models
 {
@@ -10,11 +10,10 @@ namespace VasosInteligentes.Models
         public string? Id { get; set; }
         public string? Nome { get; set; }
         [Display(Name = "Umidade Mínima")]
-        
-        public double? UmidadeIdealMin { get; set; }
+        public double UmidadeIdealMin { get; set; }
         [Display(Name = "Umidade Máxima")]
-        public double? UmidadeIdealMax { get; set; }
+        public double UmidadeIdealMax { get; set; }
         [Display(Name = "Luminosidade")]
-        public double? LuminosidadeIdeal { get; set; }
+        public double LuminosidadeIdeal { get; set; }
     }
 }

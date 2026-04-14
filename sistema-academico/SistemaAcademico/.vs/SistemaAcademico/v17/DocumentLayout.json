@@ -92,8 +92,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-24T13:31:39.547Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -118,8 +117,7 @@
               "RelativeToolTip": "SistemaAcademico\\Controllers\\DisciplinasController.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAowBUAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T12:54:37.841Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-10T12:54:37.841Z"
             },
             {
               "$type": "Document",
@@ -131,8 +129,7 @@
               "RelativeToolTip": "SistemaAcademico\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-03T15:35:55.532Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T15:35:55.532Z"
             },
             {
               "$type": "Document",
@@ -144,8 +141,7 @@
               "RelativeToolTip": "SistemaAcademico\\Migrations\\20260303125501_segunda.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-03T12:55:01.239Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-03T12:55:01.239Z"
             },
             {
               "$type": "Document",

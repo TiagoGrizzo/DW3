@@ -2,20 +2,24 @@ using Microsoft.AspNetCore.Identity;
 using VasosInteligentes.Data;
 using VasosInteligentes.Models;
 using VasosInteligentes.Seeds;
+using VasosInteligentes.Services;
+using VasosInteligentes.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-//conexão com o mongodb
+//conexão com o mongoDb
 builder.Services.Configure<MongoSettings>(
     builder.Configuration.GetSection("MongoConnection"));
 builder.Services.AddSingleton<ContextMongoDb>();
 
-//cofiguração do identity
+//configuração do Identity
 
 
-var mongoSettings = builder.Configuration.GetSection("MongoConnection").Get<AspNetCore.Identity.MongoDbCore.Infrastructure.MongoDbSettings>();
+var mongoSettings = builder.Configuration
+    .GetSection("MongoConnection")
+    .Get<MongoSettings>();
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>
     (options =>
@@ -26,24 +30,29 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>
         options.Password.RequireUppercase = false;
     })
     .AddMongoDbStores<ApplicationUser, ApplicationRole, string>
-    (mongoSettings.ConnectionString, mongoSettings.DatabaseName)
+    (mongoSettings.ConnectionString, mongoSettings.Database)
     .AddDefaultTokenProviders();
 
-//Importante para Scaffolding e as RazorPages para o Identity
+//importante para Scaffolding  e as RazorPages para o Identity
 builder.Services.AddRazorPages();
+
+//configuração envio de email
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddSingleton<EmailService>();
 
 
 var app = builder.Build();
 
-//Seeds
+//seeds
 using(var Scope = app.Services.CreateScope())
 {
     var services = Scope.ServiceProvider;
     try
     {
-       await IdentitySeeds.SeedRolesAndUser(services, "Admin@123");
+        await IdentitySeeds.SeedRolesAndUser(services, "Admin@123");
+
     }
-    catch (Exception ex)
+    catch(Exception ex)
     {
         Console.WriteLine($"Erro Seed: {ex.Message}");
     }
@@ -56,10 +65,9 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseRouting();
 
-//acrescentar app.UseAuthentication antes do app.UseAuthorization
+//acrescentar app.UseAuthentication() antes do app.UseAuthorization();
 
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -71,3 +79,5 @@ app.MapControllerRoute(
 
 
 app.Run();
+
+//partial view cadastro de usario pelo admin

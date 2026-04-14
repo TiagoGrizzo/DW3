@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,48 +18,49 @@ namespace VasosInteligentes.Controllers
     public class VasosController : Controller
     {
         private readonly ContextMongoDb _context;
-
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public VasosController(ContextMongoDb context, UserManager<ApplicationUser> userManager)
+        public VasosController(ContextMongoDb context, 
+            UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
-        [Authorize(Roles ="Administrador")]
+        [Authorize(Roles = "Administrador")]
         // GET: Vasos
         public async Task<IActionResult> Index()
         {
             var pipeline = new BsonDocument[]
             {
-                //Criar campos temporários será usado na conversão de object para string
+                //criar campos temporários será usado na conversão de Object para string
                 new BsonDocument("$addFields", new BsonDocument
                 {
                     {"PlantaIdObj", new BsonDocument("$toObjectId", "$PlantaId") }
-                }), 
-                //Faz o join usando o campo convertido
+                }),
+                //faz o join usando o campo convertido
                 new BsonDocument("$lookup", new BsonDocument
                 {
                     {"from", "Planta" },
-                    {"localField", "PLantaIdObj" },
+                    {"localField", "PlantaIdObj" },
                     {"foreignField", "_id" },
                     {"as", "PlantaRelacionada" }
                 }),
-                //Remover campos extras para não "quebrar" o C#
+                //remover campos extras para não "quebrar" o C#
                 new BsonDocument("$project", new BsonDocument
                 {
                     {"PlantaIdObj", 0 }
                 })
+
             };
             var result = await _context.Vaso.Aggregate<Vaso>(pipeline).ToListAsync();
             return View(result);
-        }//Metodo
+        }//método
 
         [Authorize(Roles = "Usuario")]
         // GET: Vasos
         public async Task<IActionResult> MeusVasos()
         {
-            //pegar o usuario logado
+            //pegar o usuário logado
             var user = await _userManager.GetUserAsync(User);
             if(user == null)
             {
@@ -68,29 +70,30 @@ namespace VasosInteligentes.Controllers
 
             var pipeline = new BsonDocument[]
             {
-                new BsonDocument ("$match", new BsonDocument("UserId", usuarioId)),
-                //Criar campos temporários será usado na conversão de object para string
+                new BsonDocument("$match", new BsonDocument("UserId", usuarioId)),
+                //criar campos temporários será usado na conversão de Object para string
                 new BsonDocument("$addFields", new BsonDocument
                 {
                     {"PlantaIdObj", new BsonDocument("$toObjectId", "$PlantaId") }
-                }), 
-                //Faz o join usando o campo convertido
+                }),
+                //faz o join usando o campo convertido
                 new BsonDocument("$lookup", new BsonDocument
                 {
                     {"from", "Planta" },
-                    {"localField", "PLantaIdObj" },
+                    {"localField", "PlantaIdObj" },
                     {"foreignField", "_id" },
                     {"as", "PlantaRelacionada" }
                 }),
-                //Remover campos extras para não "quebrar" o C#
+                //remover campos extras para não "quebrar" o C#
                 new BsonDocument("$project", new BsonDocument
                 {
                     {"PlantaIdObj", 0 }
                 })
+
             };
             var result = await _context.Vaso.Aggregate<Vaso>(pipeline).ToListAsync();
             return View(result);
-        }//Metodo
+        }//método
 
         // GET: Vasos/Details/5
         [Authorize(Roles = "Usuario")]
@@ -100,36 +103,36 @@ namespace VasosInteligentes.Controllers
             {
                 return NotFound();
             }
-
             var pipeline = new BsonDocument[]
             {
-                //Buscar apenas um vaso cujo o Id vem por parâmetro
+                //buscar apenas o vaso cujo id vem por parâmetro
                 new BsonDocument("$match", new BsonDocument("_id", new BsonObjectId(new ObjectId(id)))),
-                //Criar campos temporários será usado na conversão de object para string
+                //criar campos temporários será usado na conversão de Object para string
                 new BsonDocument("$addFields", new BsonDocument
                 {
                     {"PlantaIdObj", new BsonDocument("$toObjectId", "$PlantaId") }
-                }), 
-                //Faz o join usando o campo convertido
+                }),
+                //faz o join usando o campo convertido
                 new BsonDocument("$lookup", new BsonDocument
                 {
                     {"from", "Planta" },
-                    {"localField", "PLantaIdObj" },
+                    {"localField", "PlantaIdObj" },
                     {"foreignField", "_id" },
                     {"as", "PlantaRelacionada" }
                 }),
-                //Remover campos extras para não "quebrar" o C#
+                //remover campos extras para não "quebrar" o C#
                 new BsonDocument("$project", new BsonDocument
                 {
                     {"PlantaIdObj", 0 }
                 })
+
             };
             var vaso = await _context.Vaso.Aggregate<Vaso>(pipeline).FirstOrDefaultAsync();
             if(vaso == null)
             {
                 return NotFound();
             }
-            return View(vaso); //colocar vaso se quiser
+            return View(vaso);
         }
 
         // GET: Vasos/Create
@@ -144,19 +147,20 @@ namespace VasosInteligentes.Controllers
         // POST: Vasos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Usuario")]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Create([Bind("Nome,PlantaId,Localizacao")] Vaso vaso)
         {
-            //pegar o usuario logado
+            //pegar o usuário logado
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return RedirectToAction("Login", "Accounts");
             }
             vaso.UsuarioId = user.Id;
-            //como UsuarioId não vem da view, vai criar um erro no modelstate que deve ser retirado
+            //como UsuarioId não vem da view, vai criar um erro na
+            //ModelState que deve ser retirado
             ModelState.Remove("UsuarioId");
             if (ModelState.IsValid)
             {
@@ -165,8 +169,9 @@ namespace VasosInteligentes.Controllers
             }
             return View(vaso);
         }
-        [Authorize(Roles = "Usuario")]
+
         // GET: Vasos/Edit/5
+        [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -180,7 +185,7 @@ namespace VasosInteligentes.Controllers
                 return NotFound();
             }
             var plantas = await _context.Planta.Find(_ => true).ToListAsync();
-            ViewBag.PlantaId = new SelectList(plantas, "Id", "Nome", vaso.PlantaId);
+            ViewBag.PlantaId = new SelectList(plantas, "Id", "Nome",vaso.PlantaId);
             return View(vaso);
         }
 
@@ -189,6 +194,7 @@ namespace VasosInteligentes.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Nome,PlantaId,Localizacao")] Vaso vaso)
         {
             if (id != vaso.Id)
@@ -219,35 +225,36 @@ namespace VasosInteligentes.Controllers
         }
 
         // GET: Vasos/Delete/5
+        [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
             var pipeline = new BsonDocument[]
             {
-                //Buscar apenas um vaso cujo o Id vem por parâmetro
+                //buscar apenas o vaso cujo id vem por parâmetro
                 new BsonDocument("$match", new BsonDocument("_id", new BsonObjectId(new ObjectId(id)))),
-                //Criar campos temporários será usado na conversão de object para string
+                //criar campos temporários será usado na conversão de Object para string
                 new BsonDocument("$addFields", new BsonDocument
                 {
                     {"PlantaIdObj", new BsonDocument("$toObjectId", "$PlantaId") }
-                }), 
-                //Faz o join usando o campo convertido
+                }),
+                //faz o join usando o campo convertido
                 new BsonDocument("$lookup", new BsonDocument
                 {
                     {"from", "Planta" },
-                    {"localField", "PLantaIdObj" },
+                    {"localField", "PlantaIdObj" },
                     {"foreignField", "_id" },
                     {"as", "PlantaRelacionada" }
                 }),
-                //Remover campos extras para não "quebrar" o C#
+                //remover campos extras para não "quebrar" o C#
                 new BsonDocument("$project", new BsonDocument
                 {
                     {"PlantaIdObj", 0 }
                 })
+
             };
             var vaso = await _context.Vaso.Aggregate<Vaso>(pipeline).FirstOrDefaultAsync();
             if (vaso == null)
@@ -260,6 +267,7 @@ namespace VasosInteligentes.Controllers
         // POST: Vasos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if(id == null)
@@ -274,5 +282,6 @@ namespace VasosInteligentes.Controllers
         {
             return await _context.Vaso.Find(e => e.Id == id).AnyAsync();
         }
+        
     }
 }

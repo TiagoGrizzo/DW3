@@ -1,26 +1,27 @@
-﻿
-using Microsoft.AspNetCore.Identity;
-using MongoDB.Bson.IO;
+﻿using Microsoft.AspNetCore.Identity;
 using VasosInteligentes.Models;
+
+
 namespace VasosInteligentes.Seeds
 {
     public class IdentitySeeds
     {
-         public static async Task SeedRolesAndUser(
-             IServiceProvider serviceProvider, string defaultPassword, object roleName)
-         {
-            //Criação das roles (Admin e Usuário)
+        public static async Task SeedRolesAndUser(
+            IServiceProvider serviceProvider, 
+            string defaultPassword)
+        {
+            //criação das roles (Administrador e Usuario)
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-            string[] rolesNames = { "Administrador", "Usuario" };
-            foreach (var roleNames in rolesNames)
+            string[] roleNames = { "Administrador", "Usuario" };
+            foreach(var roleName in roleNames)
             {
                 //verificar se já foi criado
-                if(await roleManager.FindByNameAsync(roleNames) == null)
+                if(await roleManager.FindByNameAsync(roleName) == null)
                 {
-                    //Se não encontrou será inserido
+                    //se não encontrou será inserido
                     var result = await roleManager.CreateAsync(
-                        new ApplicationRole { Name = roleNames }
-                     );
+                        new ApplicationRole { Name = roleName }
+                    );
                     if (result.Succeeded)
                     {
                         Console.WriteLine($"SEED: Role {roleName} foi criada");
@@ -28,49 +29,47 @@ namespace VasosInteligentes.Seeds
                     else { return; }
                 }
             }//fim do foreach
-             //criar os usuarios
-             //criar o administrador
-            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>> ();
+            //criar os usuários 
+            //criar o administrador
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             if (await userManager.FindByEmailAsync("admin@admin.com") == null)
             {
-                //Se não encontrou será inserido
+                //se não encontrou será inserido
                 var adminUser = new ApplicationUser
                 {
-                    Username = "admin@admin.com",
+                    UserName = "admin@admin.com",
                     Email = "admin@admin.com",
                     EmailConfirmed = true
                 };
-                var resultAdmin = await userManager.CreateAsync(adminUser, "admin@admin.com");
+                var resultAdmin = await userManager.CreateAsync(adminUser, defaultPassword);
                 if (resultAdmin.Succeeded)
                 {
                     Console.WriteLine($"SEED: Administrador foi criado");
-                    await userManager.AddToRoleAsync(adminUser, "Adm");
+                    //atribuindo uma role para o usuário
+                    await userManager.AddToRoleAsync(adminUser, "Administrador");
                 }
                 else { return; }
-            }//Fim do if
+            }//fim do if
             //criar um usuário comum
             if (await userManager.FindByEmailAsync("teste@usuario.com") == null)
             {
-                //Se não encontrou será inserido
+                //se não encontrou será inserido
                 var user = new ApplicationUser
                 {
-                    Username = "teste@usuario.com",
+                    UserName = "teste@usuario.com",
                     Email = "teste@usuario.com",
                     EmailConfirmed = true
                 };
-                var resultUser = await userManager.CreateAsync(user, "Teste@");
+                var resultUser = await userManager.CreateAsync(user, "Teste@123");
                 if (resultUser.Succeeded)
                 {
-                    Console.WriteLine($"SEED: Administrador foi criado");
+                    Console.WriteLine($"SEED: Usuário Comum foi criado");
+                    //atribuindo uma role para o usuário
                     await userManager.AddToRoleAsync(user, "Usuario");
                 }
                 else { return; }
             }
-        }
 
-        internal static async Task SeedRolesAndUser(IServiceProvider services, string v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
